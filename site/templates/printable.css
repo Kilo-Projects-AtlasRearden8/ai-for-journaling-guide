@@ -1,0 +1,183 @@
+/* Printable Journal Templates — Print Styles */
+@page {
+    size: Letter;
+    margin: 0.75in 0.75in 0.75in 0.75in;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    color: #2d2b3a;
+    line-height: 1.6;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+.template-container {
+    max-width: 7in;
+    margin: 0 auto;
+    padding: 0.5in;
+}
+
+.template-header {
+    border-bottom: 2px solid #4a6fa5;
+    padding-bottom: 0.5in;
+    margin-bottom: 0.75in;
+    text-align: center;
+}
+
+.template-header h1 {
+    margin: 0;
+    font-size: 20pt;
+    color: #4a6fa5;
+}
+
+.template-header .subtitle {
+    font-size: 10pt;
+    color: #6b677a;
+    margin-top: 0.25in;
+}
+
+.section {
+    margin-bottom: 0.6in;
+    page-break-inside: avoid;
+}
+
+.section h2 {
+    font-size: 12pt;
+    color: #4a4556;
+    border-bottom: 1px solid #e0dadc;
+    padding-bottom: 0.15in;
+    margin-top: 0;
+}
+
+.label-row {
+    display: flex;
+    gap: 0.25in;
+    margin-bottom: 0.25in;
+}
+
+.label-item {
+    flex: 1;
+    border: 1px solid #c9c3c8;
+    border-radius: 4px;
+    padding: 0.15in;
+}
+
+.line {
+    border-bottom: 1px solid #c9c3c8;
+    height: 0.3in;
+    margin-bottom: 0.15in;
+}
+
+.lines {
+    border: 1px solid #c9c3c8;
+    border-radius: 4px;
+    min-height: 1.5in;
+    padding: 0.2in;
+    margin-bottom: 0.25in;
+}
+
+.scale-row {
+    display: flex;
+    gap: 0.2in;
+    margin-bottom: 0.3in;
+}
+
+.scale-item {
+    flex: 1;
+    text-align: center;
+    border: 1px solid #c9c3c8;
+    border-radius: 4px;
+    padding: 0.15in 0.05in;
+    font-size: 9pt;
+    color: #6b677a;
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15in;
+    margin-bottom: 0.15in;
+}
+
+.checkbox input {
+    width: 0.2in;
+    height: 0.2in;
+}
+
+.card {
+    border: 1px solid #4a6fa5;
+    border-radius: 6px;
+    padding: 0.3in 0.25in;
+    margin-bottom: 0.25in;
+    background: #faf7f2;
+    page-break-inside: avoid;
+}
+
+.card .prompt {
+    font-style: italic;
+    margin-bottom: 0.15in;
+}
+
+.card .category {
+    font-size: 8pt;
+    color: #6b677a;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.3in;
+}
+
+th, td {
+    border: 1px solid #c9c3c8;
+    padding: 0.15in 0.1in;
+    text-align: left;
+    font-size: 10pt;
+}
+
+th {
+    background: #e8eef7;
+    color: #4a6fa5;
+}
+
+.footer-note {
+    font-size: 8pt;
+    color: #6b677a;
+    margin-top: 0.5in;
+    border-top: 1px solid #e0dadc;
+    padding-top: 0.25in;
+    text-align: center;
+}
+
+@media print {
+    body {
+        background: #fff;
+    }
+    .no-print {
+        display: none;
+    }
+}
+
+@media screen {
+    body {
+        background: #faf7f2;
+        padding: 1in;
+    }
+    .template-container {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        padding: 1in;
+    }
+}

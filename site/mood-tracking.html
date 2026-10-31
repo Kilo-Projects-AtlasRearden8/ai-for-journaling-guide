@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracking — Gentle Patterns Over Time | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link">Getting Started</a>
+    <a href="privacy.html" class="nav-link">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link active">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Mood Tracking — Gentle Patterns Over Time</h1>
+<p>You don't need a color-coded spreadsheet to track your mood. A few notes a day<br />
+can reveal patterns that help you understand yourself better.</p>
+<h2 id="the-simple-mood-log">The Simple Mood Log</h2>
+<p>Each day, note:</p>
+<ol>
+<li><strong>Your mood</strong> (use words, not just numbers)</li>
+<li><strong>One event or thought</strong> tied to that mood</li>
+<li><strong>One thing you did</strong> that helped (or drained you)</li>
+</ol>
+<p><strong>Example:</strong></p>
+<blockquote>
+<p>October 20 — Tired but content. Walked in the park after lunch.<br />
+Energy dipped around 3 PM.</p>
+</blockquote>
+<h2 id="word-based-mood-tracking">Word-Based Mood Tracking</h2>
+<p>Numbers can feel clinical. Try mood words instead:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High Energy</strong></td>
+<td>Energized, inspired, playful, curious</td>
+</tr>
+<tr>
+<td><strong>Steady</strong></td>
+<td>Grounded, content, calm, focused</td>
+</tr>
+<tr>
+<td><strong>Low Energy</strong></td>
+<td>Tired, quiet, heavy, numb, restless</td>
+</tr>
+<tr>
+<td><strong>Challenging</strong></td>
+<td>Anxious, frustrated, sad, overwhelmed, uncertain</td>
+</tr>
+</tbody>
+</table>
+<p>Ask yourself: <em>"What's the dominant word for today?"</em></p>
+<h2 id="ai-enhanced-mood-reflection">AI-Enhanced Mood Reflection</h2>
+<p>Once a week, paste a few entries into your AI tool and ask:</p>
+<ul>
+<li>"What patterns do you notice in my mood entries?"</li>
+<li>"Do my energy levels correlate with any activities I mentioned?"</li>
+<li>"What might I experiment with next week based on these entries?"</li>
+</ul>
+<h2 id="the-mood-tracker-template">The Mood Tracker Template</h2>
+<p>This manual includes a printable weekly mood tracker you can fill in by hand.<br />
+See <a href="templates.html">Printable Templates</a> for the full set.</p>
+<p><strong>Sample weekly layout (printable):</strong></p>
+<pre><code>        Mon  Tue  Wed  Thu  Fri  Sat  Sun
+Energy  ___  ___  ___  ___  ___  ___  ___
+       (1-5 scale or word)
+</code></pre>
+<h2 id="what-patterns-look-like">What Patterns Look Like</h2>
+<p>Don't overanalyze. Common mood patterns:</p>
+<ul>
+<li><strong>Energy dips</strong> after meetings or late nights</li>
+<li><strong>Better moods</strong> following walks, creative time, or quiet mornings</li>
+<li><strong>Consistency</strong> matters more than peaks — small, steady wins</li>
+<li><strong>Rest days</strong> are productive days, not failures</li>
+</ul>
+<h2 id="low-energy-friendly-tracking">Low-Energy Friendly Tracking</h2>
+<p>If even daily check-ins feel like too much:</p>
+<ul>
+<li>Track mood <strong>2–3 times a week</strong> instead of every day</li>
+<li>Use a single word: "Today felt: tired."</li>
+<li>Let AI summarize: "In your last 10 entries, you mentioned 'tired' 4 times."</li>
+</ul>
+<h2 id="privacy-note">Privacy Note</h2>
+<p>Mood data is deeply personal. Keep it local, redact identifiers, and remember<br />
+that AI mood tools are reflective — not diagnostic.</p>
+<blockquote>
+<p><em>See <a href="privacy.html">Privacy Rules</a> for keeping your entries safe.</em></p>
+</blockquote>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>

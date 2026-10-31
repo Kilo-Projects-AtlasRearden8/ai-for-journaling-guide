@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Journal Templates | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link">Getting Started</a>
+    <a href="privacy.html" class="nav-link">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link active">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Printable Journal Templates</h1>
+<p>Sometimes paper is better. A printed page doesn't need charging, won't<br />
+distract you with notifications, and lets you write without a screen between<br />
+you and your thoughts.</p>
+<p>This page collects printable templates you can download, print, and use<br />
+immediately.</p>
+<h2 id="available-templates">Available Templates</h2>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Best For</th>
+<th>Pages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily Journal</strong></td>
+<td>Morning or evening check-ins</td>
+<td>1 page</td>
+</tr>
+<tr>
+<td><strong>Mood Tracker</strong></td>
+<td>Tracking energy &amp; mood over a week</td>
+<td>1 page</td>
+</tr>
+<tr>
+<td><strong>Weekly Review</strong></td>
+<td>Sunday reflection &amp; planning</td>
+<td>1 page</td>
+</tr>
+<tr>
+<td><strong>Reflection Cards</strong></td>
+<td>Prompts you can cut out &amp; draw from</td>
+<td>4 cards/page</td>
+</tr>
+<tr>
+<td><strong>Insight Worksheet</strong></td>
+<td>Monthly pattern review</td>
+<td>1 page</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-use-these-templates">How to Use These Templates</h2>
+<ol>
+<li><strong>Open</strong> any <code>.html</code> file in the <code>templates/</code> folder</li>
+<li><strong>Print</strong> using your browser (Ctrl+P / Cmd+P)</li>
+<li><strong>Fill in</strong> by hand — pen or pencil</li>
+<li><strong>File</strong> in a binder, folder, or notebook</li>
+</ol>
+<h2 id="print-settings">Print Settings</h2>
+<p>For best results:</p>
+<ul>
+<li><strong>Paper:</strong> US Letter (8.5" × 11") or A4</li>
+<li><strong>Margins:</strong> None or minimal (0.5")</li>
+<li><strong>Orientation:</strong> Portrait</li>
+<li><strong>Color:</strong> Optional — templates print fine in black &amp; white</li>
+</ul>
+<h2 id="daily-journal-template">Daily Journal Template</h2>
+<p>A single page for one day:</p>
+<ul>
+<li>Date &amp; day of week</li>
+<li>Mood check-in (word or 1–5 scale)</li>
+<li>"Today I'm grateful for..."</li>
+<li>"One thing I want to remember..."</li>
+<li>Free-writing space (lined)</li>
+<li>Evening reflection: "How did today go?"</li>
+</ul>
+<h2 id="mood-tracker-template">Mood Tracker Template</h2>
+<p>One week per page:</p>
+<ul>
+<li>7 columns (Mon–Sun)</li>
+<li>Energy level (1–5 or word)</li>
+<li>Mood word</li>
+<li>One event tied to the mood</li>
+<li>Notes section at bottom</li>
+</ul>
+<h2 id="weekly-review-template">Weekly Review Template</h2>
+<p>For Sunday evenings:</p>
+<ul>
+<li>Wins from this week</li>
+<li>Challenges I faced</li>
+<li>What drained my energy</li>
+<li>What gave me energy</li>
+<li>One thing to carry into next week</li>
+<li>One thing to let go of</li>
+</ul>
+<h2 id="reflection-cards">Reflection Cards</h2>
+<p>Printable cards with gentle prompts. Cut them out, fold them, and draw one<br />
+when you're stuck:</p>
+<ul>
+<li>"What's one thing I'm carrying today?"</li>
+<li>"What would my best self do right now?"</li>
+<li>"What am I avoiding — and why?"</li>
+<li>"What does 'enough' look like today?"</li>
+<li>Plus 12 more</li>
+</ul>
+<h2 id="insight-worksheet">Insight Worksheet</h2>
+<p>For monthly pattern review:</p>
+<ul>
+<li>Recurring themes I noticed</li>
+<li>Mood trends (up, down, steady)</li>
+<li>One thing I learned about myself</li>
+<li>One boundary I need</li>
+<li>One experiment for next month</li>
+</ul>
+<h2 id="digital-alternative">Digital Alternative</h2>
+<p>If you prefer typing, you can also:</p>
+<ul>
+<li>Open the template HTML in your browser and type directly</li>
+<li>Save as PDF from your browser</li>
+<li>Copy the template into your preferred note-taking app</li>
+</ul>
+<p>All templates are plain HTML/CSS — no special software required.</p>
+<h2 id="template-files">Template Files</h2>
+<p>All templates live in <code>templates/</code>:</p>
+<pre><code>templates/
+├── printable.css          # Print-focused stylesheet
+├── daily-journal.html
+├── mood-tracker.html
+├── weekly-review.html
+├── reflection-cards.html
+└── insight-worksheet.html
+</code></pre>
+<p>Print them, write in them, keep them. They're yours.</p>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>

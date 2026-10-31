@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflection Prompts — Questions That Matter | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link">Getting Started</a>
+    <a href="privacy.html" class="nav-link">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link active">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Reflection Prompts — Questions That Matter</h1>
+<p>The magic of AI journaling isn't in replacing your thoughts — it's in asking<br />
+the <em>right</em> questions at the right time. This page collects gentle, open-ended<br />
+prompts you can use daily, weekly, and monthly.</p>
+<h2 id="how-to-use-these-prompts">How to Use These Prompts</h2>
+<ul>
+<li><strong>Copy one</strong> into your journal or AI tool</li>
+<li><strong>Don't overthink</strong> the response — write freely for 2–5 minutes</li>
+<li><strong>Follow up</strong> with "Tell me more about that" or "What resonates here?"</li>
+<li><strong>Bookmark</strong> the ones that click for you</li>
+</ul>
+<h2 id="daily-reflection-prompts">Daily Reflection Prompts</h2>
+<p>These are for morning intention-setting or evening wind-down. Pick one:</p>
+<ol>
+<li>"What's one thing I'm carrying today — a thought, feeling, or worry?"</li>
+<li>"If today had a color, what would it be — and why?"</li>
+<li>"What's something small I could do for myself today?"</li>
+<li>"What's one interaction today that stayed with me — and why?"</li>
+<li>"If I could give yesterday-me one piece of advice, what would it be?"</li>
+<li>"What's one thing I'm grateful for that I often overlook?"</li>
+<li>"What would it feel like to set down one thing I'm holding too tightly?"</li>
+<li>"What does my body need right now — really?"</li>
+</ol>
+<h2 id="weekly-reflection-prompts">Weekly Reflection Prompts</h2>
+<p>Use these on Sunday evening or Monday morning:</p>
+<ol>
+<li>"What were three moments this week that felt 'like me'?"</li>
+<li>"When did I feel most alive this week? What was happening?"</li>
+<li>"Is there a pattern in what drained me vs. what gave me energy?"</li>
+<li>"What's one assumption I'm holding that might no longer serve me?"</li>
+<li>"If I could celebrate one small win from this week, what would it be?"</li>
+<li>"What's one thing I'm curious about for next week?"</li>
+<li>"What story am I telling myself about this week — and is it accurate?"</li>
+</ol>
+<h2 id="monthly-reflection-prompts">Monthly Reflection Prompts</h2>
+<ol>
+<li>"Looking back, what themes kept showing up this month?"</li>
+<li>"What's one thing I've learned about myself this month?"</li>
+<li>"If I could protect one feeling or habit into next month, what would it be?"</li>
+<li>"What's one boundary I need to set or reinforce?"</li>
+<li>"What does 'enough' feel like for me right now?"</li>
+</ol>
+<h2 id="ai-generated-prompts-a-sample-workflow">AI-Generated Prompts: A Sample Workflow</h2>
+<p>Instead of using a fixed list, let AI tailor prompts to your entries:</p>
+<pre><code>User: &quot;Yesterday I felt frustrated during a meeting — I couldn't
+       get my point across and left feeling unseen.&quot;
+
+AI:    &quot;What part of that interaction do you think you'll replay
+       in your mind tonight? And what might you want to say to
+       yourself about it tomorrow morning?&quot;
+</code></pre>
+<h2 id="prompts-for-specific-goals">Prompts for Specific Goals</h2>
+<h3 id="processing-a-difficult-emotion">Processing a Difficult Emotion</h3>
+<ul>
+<li>"What is this emotion trying to tell me?"</li>
+<li>"Where do I feel it in my body?"</li>
+<li>"What would compassion say to this version of me?"</li>
+</ul>
+<h3 id="sparking-creativity">Sparking Creativity</h3>
+<ul>
+<li>"What's a half-forgotten idea I keep circling back to?"</li>
+<li>"If I had no constraints, what would I create?"</li>
+<li>"What story from my life deserves to be told?"</li>
+</ul>
+<h3 id="building-habits">Building Habits</h3>
+<ul>
+<li>"What's one tiny step I could take tomorrow?"</li>
+<li>"What would 'good enough' look like?"</li>
+<li>"What's getting in the way of starting?"</li>
+</ul>
+<h2 id="prompt-generator-template">Prompt Generator Template</h2>
+<p>You can ask AI to generate custom prompts for you:</p>
+<blockquote>
+<p>"You're a gentle journaling companion. I journal about [TOPIC — e.g.,<br />
+stress at work, creative blocks, relationships]. Give me three<br />
+warm, open-ended prompts for today — nothing clinical, no advice, just<br />
+questions that invite curiosity."</p>
+</blockquote>
+<h2 id="printable-prompt-cards">Printable Prompt Cards</h2>
+<p>See the <a href="templates.html">Printable Templates</a> page for a set of prompt<br />
+cards you can print, cut out, and draw from a jar — no screen needed.</p>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>

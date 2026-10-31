@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizing Entries — Your Journal, Your System | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link">Getting Started</a>
+    <a href="privacy.html" class="nav-link">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link active">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Organizing Entries — Your Journal, Your System</h1>
+<p>An organized journal is easier to revisit — and AI can help you find meaning<br />
+in old entries without drowning in folders and tags.</p>
+<h2 id="the-minimum-viable-system">The Minimum-Viable System</h2>
+<p>You don't need elaborate categories. Start with:</p>
+<ol>
+<li><strong>Date</strong> — filename or header (e.g., <code>2024-10-20.md</code>)</li>
+<li><strong>One tag</strong> — a single word at the top (<code>#gratitude</code>, <code>#stress</code>, <code>#idea</code>)</li>
+<li><strong>Search</strong> — Ctrl+F or <code>grep</code> to find entries</li>
+</ol>
+<p>That's enough. You can always evolve it later.</p>
+<h2 id="naming-and-filing">Naming and Filing</h2>
+<p><strong>Option A: Folder by month</strong></p>
+<pre><code>journal/
+  2024-10/
+    2024-10-20.md
+    2024-10-21.md
+</code></pre>
+<p><strong>Option B: Flat folder with date prefixes</strong></p>
+<pre><code>journal/
+  2024-10-20.md
+  2024-10-21.md
+</code></pre>
+<p><strong>Option C: Tag-based</strong></p>
+<pre><code>journal/
+  gratitude/
+  reflections/
+  ideas/
+</code></pre>
+<p>Pick whatever feels effortless — then stick with it for 30 days before changing.</p>
+<h2 id="using-tags-wisely">Using Tags Wisely</h2>
+<p>Tags are shortcuts for your future self. Add 1–2 per entry:</p>
+<ul>
+<li><code>#reflection</code> — deeper processing</li>
+<li><code>#idea</code> — sparks worth revisiting</li>
+<li><code>#gratitude</code> — things you're thankful for</li>
+<li><code>#stress</code> — worries or challenges</li>
+<li><code>#insight</code> — "aha" moments</li>
+<li><code>#todo</code> — small next steps</li>
+</ul>
+<h2 id="ai-powered-organization">AI-Powered Organization</h2>
+<p>Ask AI to help once a month:</p>
+<blockquote>
+<p>"I have 30 journal entries tagged with various topics. Could you summarize<br />
+the main themes I keep writing about?"</p>
+</blockquote>
+<p>Or for deeper dives:</p>
+<blockquote>
+<p>"Find entries where I mentioned 'overwhelmed' and summarize what I was<br />
+going through."</p>
+</blockquote>
+<h2 id="search-strategies">Search Strategies</h2>
+<h3 id="with-your-editor-or-terminal">With your editor or terminal</h3>
+<pre><code class="language-bash"># Find all entries mentioning a word
+grep -r &quot;overwhelmed&quot; journal/
+
+# Find by tag
+grep -r &quot;#stress&quot; journal/
+</code></pre>
+<h3 id="with-ai-assistance">With AI assistance</h3>
+<blockquote>
+<p>"In my entries from last month, when did I mention feeling uncertain?"</p>
+</blockquote>
+<h2 id="retrospective-what-did-i-learn">Retrospective: "What Did I Learn?"</h2>
+<p>At the end of each month, ask AI to help you surface insights:</p>
+<blockquote>
+<p>"Here are my 4 entries from this week. What themes or recurring thoughts do<br />
+you notice? What might I want to explore further next month?"</p>
+</blockquote>
+<h2 id="digital-vs-paper-organization">Digital vs. Paper Organization</h2>
+<table>
+<thead>
+<tr>
+<th>Digital</th>
+<th>Paper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast search (Ctrl+F)</td>
+<td>Physical, tactile</td>
+</tr>
+<tr>
+<td>Tags are easy to edit</td>
+<td>Harder to reorganize later</td>
+</tr>
+<tr>
+<td>Backups to cloud/drive</td>
+<td>No risk of file corruption</td>
+</tr>
+<tr>
+<td>AI can scan 100s of entries</td>
+<td>Private by default</td>
+</tr>
+</tbody>
+</table>
+<p>Choose what aligns with your energy and privacy needs. You can even mix —<br />
+write by hand some days, type others.</p>
+<h2 id="templates-for-organization">Templates for Organization</h2>
+<p>This manual includes printable organization aids:</p>
+<ul>
+<li>Monthly index pages for your binder</li>
+<li>Tag reference sheets</li>
+<li>Entry templates with built-in prompts</li>
+</ul>
+<p>See <a href="templates.html">Printable Templates</a> for the full set.</p>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>

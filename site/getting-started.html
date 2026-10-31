@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with AI Journaling | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link active">Getting Started</a>
+    <a href="privacy.html" class="nav-link">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Getting Started with AI Journaling</h1>
+<p>AI journaling is simply using an AI assistant as a reflective companion. You write, think, or speak — and AI helps you dig deeper, spot patterns, and organize your inner world.</p>
+<p>This page helps you understand the landscape and pick a path that fits your comfort level and privacy needs.</p>
+<h2 id="what-ai-journaling-can-do">What AI Journaling Can Do</h2>
+<p>AI can support your journaling practice in several ways:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>How It Helps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prompt generation</strong></td>
+<td>Offers gentle, open-ended questions when you're stuck</td>
+</tr>
+<tr>
+<td><strong>Pattern recognition</strong></td>
+<td>Notices recurring themes across your entries</td>
+</tr>
+<tr>
+<td><strong>Summarization</strong></td>
+<td>Recaps your week or month in a few sentences</td>
+</tr>
+<tr>
+<td><strong>Mood tracking</strong></td>
+<td>Helps you tag and visualize emotional trends</td>
+</tr>
+<tr>
+<td><strong>Organization</strong></td>
+<td>Tags, categorizes, and retrieves entries by topic</td>
+</tr>
+<tr>
+<td><strong>Idea expansion</strong></td>
+<td>Builds on half-formed thoughts without judgment</td>
+</tr>
+</tbody>
+</table>
+<h2 id="choosing-your-approach">Choosing Your Approach</h2>
+<p>You don't need a fancy tool to start. Here are three tiers, from simplest to most private:</p>
+<h3 id="tier-1-cloud-based-ai-fastest-start">Tier 1: Cloud-Based AI (Fastest Start)</h3>
+<p>If you're comfortable with major AI providers and want convenience:</p>
+<ul>
+<li>ChatGPT (free tier), Claude, or Gemini</li>
+<li>Simply paste or type your journal entry</li>
+<li>Ask follow-up questions like "What themes do you notice?" or "What might I explore further?"</li>
+</ul>
+<p><strong>Privacy tip:</strong> Never paste entries containing names, addresses, medical details,<br />
+or anything you wouldn't share with a stranger. Use a private browser window.</p>
+<h3 id="tier-2-local-ai-more-privacy">Tier 2: Local AI (More Privacy)</h3>
+<p>Run models on your own machine:</p>
+<ul>
+<li><strong>Ollama</strong> + models like Llama 3, Phi-3, or Mistral</li>
+<li><strong>LM Studio</strong> (Windows/macOS) with a simple GUI</li>
+<li><strong>Jan</strong> (open-source desktop app)</li>
+</ul>
+<pre><code class="language-bash"># Example with Ollama
+ollama run llama3
+# Then paste your journal entry and ask for reflection prompts
+</code></pre>
+<h3 id="tier-3-self-hosted-maximum-privacy">Tier 3: Self-Hosted (Maximum Privacy)</h3>
+<ul>
+<li>Run a model on a personal server or home network</li>
+<li>Use tools like Text Generation Web UI, Ollama (server mode), or Ollama LLM</li>
+<li>No internet required after initial model download</li>
+</ul>
+<h2 id="your-first-entry-a-template">Your First Entry: A Template</h2>
+<ol>
+<li><strong>Set the scene</strong> — "Here's what happened today..."</li>
+<li><strong>Name a feeling</strong> — "I felt..."</li>
+<li><strong>Ask AI one question</strong> — "What's worth reflecting on here?"</li>
+<li><strong>Respond in your own words</strong> — no need to be polished</li>
+<li><strong>Save it</strong> — in a file or on paper</li>
+</ol>
+<h2 id="quick-tips">Quick Tips</h2>
+<ul>
+<li>Start with 2–3 minutes, not 20</li>
+<li>It's okay to say "I don't know" or "Nothing much happened"</li>
+<li>AI is a mirror, not a therapist — use discernment</li>
+<li>Keep a local backup of your entries</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="privacy.html">Privacy Rules</a> — protecting your data</li>
+<li><a href="reflection-prompts.html">Reflection Prompts</a> — ready-to-use questions</li>
+<li><a href="templates.html">Printable Templates</a> — journal pages for paper or digital use</li>
+</ul>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>

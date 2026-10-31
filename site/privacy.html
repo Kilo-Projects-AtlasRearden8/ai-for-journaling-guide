@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Rules — Keeping Your Journal Safe | AI for Journaling — A Beginner&#x27;s Manual</title>
+    <meta name="description" content="A warm, low-pressure guide to using AI as a journaling companion. Reflection prompts, mood tracking, entry organization, and actionable insights — with strong privacy rules and a local-first mindset.">
+    <meta name="author" content="Asdale Dynamics, LLC">
+    <link rel="icon" href="data:,">
+    <style>
+/* AI for Journaling — Site Styles */
+:root {
+    --bg: #faf7f2;
+    --text: #2d2b3a;
+    --muted: #6b677a;
+    --accent: #4a6fa5;
+    --accent-soft: #e8eef7;
+    --border: #e0dadc;
+    --card: #ffffff;
+    --max-width: 48rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.site-header h1 {
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.subtitle {
+    margin: 0 0 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.site-nav {
+    margin-top: 0.5rem;
+}
+
+.nav-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.nav-link.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.content {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+}
+
+.content h1 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.content h2 {
+    color: #4a4556;
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3rem;
+}
+
+.content h3 {
+    color: #5a536b;
+    margin-top: 1.5rem;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+code {
+    background: var(--accent-soft);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Fira Code", "Courier New", monospace;
+    font-size: 0.9rem;
+}
+
+pre {
+    background: #2d2b3a;
+    color: #e6e3d7;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+}
+
+pre code {
+    background: transparent;
+    color: inherit;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+th {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 6px 6px 0;
+}
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
+
+.tip {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.warning {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.note {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--accent);
+    padding: 0.75rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+}
+
+.site-footer {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer .small {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .site-header h1 {
+        font-size: 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1><span class="ai-icon">🤖</span> AI for Journaling</h1>
+        <p class="subtitle">A Beginner's Manual</p>
+        <nav class="site-nav">
+            <div class="nav-group">
+                <a href="index.html" class="nav-link">Home</a>
+    <a href="getting-started.html" class="nav-link">Getting Started</a>
+    <a href="privacy.html" class="nav-link active">Privacy Rules</a>
+    <a href="reflection-prompts.html" class="nav-link">Reflection Prompts</a>
+    <a href="mood-tracking.html" class="nav-link">Mood Tracking</a>
+    <a href="organizing.html" class="nav-link">Organizing Entries</a>
+    <a href="insights.html" class="nav-link">Turning Notes into Insights</a>
+    <a href="templates.html" class="nav-link">Printable Templates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        <article class="content">
+            <h1>Privacy Rules — Keeping Your Journal Safe</h1>
+<p>Your journal is yours. Always. AI journaling tools can be powerful, but they also<br />
+raise real questions about who sees your innermost thoughts.</p>
+<p>This page covers the rules we follow and recommend.</p>
+<h2 id="the-golden-rules">The Golden Rules</h2>
+<h3 id="1-your-thoughts-are-not-training-data">1. Your Thoughts Are Not Training Data</h3>
+<ul>
+<li>Never paste entries into tools that explicitly state they use your input<br />
+  for model training</li>
+<li>When in doubt, prefer local or self-hosted models</li>
+<li>Read the terms of service — look for clauses about "data usage"</li>
+</ul>
+<h3 id="2-treat-ai-like-a-trusted-stranger">2. Treat AI Like a Trusted Stranger</h3>
+<ul>
+<li>You wouldn't hand your journal to someone on the street</li>
+<li>AI assistants are sophisticated, but they are not human confidants</li>
+<li>Avoid sharing names, locations, medical records, financial data, or<br />
+  deeply identifying details</li>
+</ul>
+<h3 id="3-local-first-whenever-possible">3. Local-First Whenever Possible</h3>
+<p>Local tools process your data on your machine — no servers, no retention:<br />
+- <strong>Ollama</strong> (runs LLMs locally on Mac, Linux, Windows)<br />
+- <strong>LM Studio</strong> (desktop app with local models)<br />
+- <strong>Jan</strong> (open-source, privacy-focused)</p>
+<pre><code class="language-bash"># Ollama example — everything stays on your computer
+ollama run mistral
+</code></pre>
+<h3 id="4-encrypt-before-sharing">4. Encrypt Before Sharing</h3>
+<p>If you must use a cloud-based tool:<br />
+- Redact personal details before pasting<br />
+- Use a local text editor, not a collaborative document<br />
+- Consider encrypting entries with a tool like <code>age</code> or <code>gpg</code></p>
+<h3 id="5-own-your-data">5. Own Your Data</h3>
+<ul>
+<li>Store journal entries in plain text or markdown files you control</li>
+<li>Back up regularly — to an external drive, not just the cloud</li>
+<li>Use version control (e.g., git) for your entries if you're comfortable:</li>
+</ul>
+<pre><code class="language-bash">git init ~/my-journal
+git add -A
+git commit -m &quot;daily entry&quot;
+</code></pre>
+<h3 id="6-no-health-insights-from-ai">6. No Health Insights From AI</h3>
+<div class="warning"><strong>Never use AI journaling as a substitute for professional mental health support.</strong> AI cannot diagnose, treat, or replace therapy. If you're struggling, reach out to a qualified professional.</div>
+
+<h2 id="what-this-site-does">What This Site Does</h2>
+<p>This manual and its templates:</p>
+<ul>
+<li>Contain <strong>no API keys, secrets, or credentials</strong></li>
+<li>Are <strong>fully static</strong> — no tracking, no cookies, no analytics</li>
+<li>Are <strong>local-first</strong> — build and view on your own machine</li>
+<li>Are licensed under the <strong>MIT License</strong> — use freely, no strings attached</li>
+</ul>
+<h2 id="quick-privacy-checklist">Quick Privacy Checklist</h2>
+<table>
+<thead>
+<tr>
+<th>✅</th>
+<th>I do this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td>Use a private browser window for cloud AI tools</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Redact names and identifying details before pasting</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Prefer local or self-hosted models when possible</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Save entries in files I control, not platform notes</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Review tool permissions and data policies regularly</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Remember AI is a tool, not a therapist</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Copyright (c) 2026 Asdale Dynamics, LLC</strong></p>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Copyright (c) 2026 Asdale Dynamics, LLC &middot; Built with care, privacy-first.</p>
+        <p class="small">This guide is for educational purposes. AI journaling aids
+        are companions, not replacements for human reflection or professional care.</p>
+    </footer>
+</body>
+</html>
